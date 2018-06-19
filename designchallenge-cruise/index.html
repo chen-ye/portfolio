@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>designchallenge-cruise</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+<!-- Sorry about this, I really haven't had a chance to clean up anything yet... -->
+      <style> 
+      @import url('https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+/**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+.portfolio {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  line-height: 2;
+  color: #23283c;
+}
+.portfolio > * {
+  max-width: 48em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.portfolio h1,
+.portfolio h2,
+.portfolio h3,
+.portfolio h4 {
+  color: #ff3b58;
+  text-align: center;
+}
+.portfolio h1,
+.portfolio h2,
+.portfolio h3,
+.portfolio h4,
+.portfolio h5,
+.portfolio h6 {
+  page-break-after: avoid;
+}
+.portfolio h1 {
+  font-size: 3em;
+  margin: 4em auto;
+}
+.portfolio h2 {
+  margin: 3em auto 1em;
+}
+.portfolio h3 {
+  font-size: 1em;
+  margin: 3em auto 2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+.portfolio h4 {
+  font-size: 1em;
+  margin: 3em auto 2em;
+  font-weight: 400;
+}
+.portfolio p {
+  margin-bottom: 2em;
+}
+.portfolio p br + img {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.portfolio p br + img:last-child {
+  page-break-after: always;
+}
+.portfolio a {
+  color: #414A70;
+  text-decoration: underline;
+}
+.portfolio a:hover {
+  color: #3859ED;
+  text-decoration: underline;
+}
+.portfolio ul {
+  max-width: 46em;
+}
+.portfolio img {
+  width: 100%;
+  max-width: 60em;
+}
+.portfolio blockquote {
+  page-break-inside: avoid;
+  font-family: 'Merriweather', serif;
+  font-style: italic;
+  font-size: 1em;
+  color: #23283c;
+  padding: 0;
+  border: none;
+  margin-bottom: 2em;
+}
+.portfolio blockquote em {
+  font-style: normal;
+}
+.portfolio blockquote strong {
+  font-weight: 800;
+}
+.portfolio strong {
+  color: #23283c;
+}
+#designchallenge-cruise .prototype-container {
+  max-width: none;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  position: relative;
+  overflow: hidden;
+  height: 0;
+  padding-bottom: 52%;
+}
+#designchallenge-cruise .prototype-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   portfolio" id="designchallenge-cruise">
+      <h1 class="mume-header" id="design-challenge-cruise">Design Challenge: Cruise</h1>
+
+<h2 class="mume-header" id="prompt">Prompt</h2>
+
+<h3 class="mume-header" id="scenario">Scenario</h3>
+
+<p>The San Francisco Muni interface is undergoing a redesign, but hardware of the<br>
+terminal is to remain the same.</p>
+<p>The only requirement is that all the current features are to remain:</p>
+<ol>
+<li>Buying a paper ticket</li>
+<li>Buying a clipper card</li>
+<li>Adding value to a card or ticket</li>
+<li>Viewing balance of the card or ticket</li>
+</ol>
+<p>New feature proposals are welcome.</p>
+<h3 class="mume-header" id="task">Task</h3>
+
+<h4 class="mume-header" id="design-a-web-based-interface-replicating-optimal-functionality-for-a-new-muni-terminal">Design a web-based interface replicating optimal functionality for a new Muni terminal</h4>
+
+<h2 class="mume-header" id="result-deliverables">Result + Deliverables</h2>
+
+<h4 class="mume-header" id="selected-mockups">Selected Mockups</h4>
+
+<p><img src="img/mockups/Home-A.png" alt="Home A"><br>
+<img src="img/mockups/Clipper-Options-A.png" alt="Home A"><br>
+<img src="img/mockups/Payment-Clipper-A.png" alt="Home A"></p>
+<h4 class="mume-header" id="figma-prototype">Figma Prototype</h4>
+
+<p><a href="https://www.figma.com/file/ZduUKJ3GO9jBt2X6VzTl7qjn/Cruise-Design-Challenge-II?node-id=1%3A3529">Figma Source</a></p>
+<div class="prototype-container"><iframe style="border: none;" src="https://www.figma.com/embed?embed_host=share&amp;url=https://www.figma.com/proto/ZduUKJ3GO9jBt2X6VzTl7qjn/Cruise-Design-Challenge-II?node-id=1%3A3343&amp;scaling=contain" allowfullscreen=""></iframe></div>
+<h4 class="mume-header" id="web-based-prototype">Web-based Prototype</h4>
+
+<p>A web-based prototype of the home screen <a href="prototype">can be found here</a>.</p>
+<h4 class="mume-header" id="optional-features">Optional Features</h4>
+
+<ul>
+<li>Station Name + Time</li>
+<li>Train Tracker</li>
+</ul>
+<p><em>Features not named as optional are considered core to the redesign</em></p>
+<h2 class="mume-header" id="process">Process</h2>
+
+<h3 class="mume-header" id="background-domain-research">Background + Domain Research</h3>
+
+<blockquote>
+<p>Mass transit is one of the most universal experiences of living in a modern city. Everyone has to get around, and many different kinds of people do so by taking the train, bus, or subway every day. That means that a lot of people, myself included, are intimately familiar with the interfaces mediating these interactions.<br>
+However, many of the parameters differentiating <strong>how</strong> we use these interfaces (such as where we work and live, our physical ability, and how old we are or whether we are in school) remain relatively constant for a given individual, and so that individual might only see a small set of the available use cases. Thus, even though this is only a ~5 hour design challenge, it's important to spend time researching the transit system, and how different people use it. For many people in the US, public transit is the only option, and we must take care to ensure that our interface serves edge cases just as well as main experiences.</p>
+</blockquote>
+<h4 class="mume-header" id="munis-current-ticketing-system-fare-structure">Muni's Current Ticketing System + Fare Structure</h4>
+
+<h5 class="mume-header" id="tvms-ticket-machines">TVMs (Ticket Machines)</h5>
+
+<p>We are constrained by the hardware of the existing ticketing machines, which consists of:</p>
+<ul>
+<li>A non-touchscreen display (4:3 aspect ratio, ~9×12&quot;, assumed resolution to be 1024×768 for ~96 dpi)</li>
+<li>Alphabetically labeled (<strong>A-E</strong>) softkeys lining the bottom halves of the left and right of the display</li>
+<li>A <strong>CANCEL</strong> key</li>
+<li>Receptacles and readers for:
+<ul>
+<li>Bills + Coins</li>
+<li>Cards (with a keypad for PIN entry, and a safety mirror)</li>
+<li>Cards, Change, and Reciepts</li>
+<li>Contactless Clipper cards</li>
+</ul>
+</li>
+<li>A speaker for feedback tones</li>
+<li>An audio jack for narration for customers with limited vision</li>
+<li>A LED marquee display device on top</li>
+</ul>
+<p>All controls on the machine are labeled with text as well as braille.</p>
+<h5 class="mume-header" id="fare-structure">Fare Structure</h5>
+
+<p>TVMs sit within a constellation of Muni fare-collection options. Briefly, customers can use:</p>
+<ul>
+<li>A Clipper card to tap on when boarding a bus / tram street-side, or tap into a Muni Metro station</li>
+<li>Mobile tickets on the Muni Mobile smartphone app for proof-of-payment when boarding street-side, or for showing to an agent at a Muni Metro station</li>
+<li>A paper ticket to scan at a Muni Metro station</li>
+<li>A transfer slip / pass for proof-of-payment when boarding street-side, or for showing to an agent at a Muni Metro station</li>
+<li>Cash fare boxes when boarding a bus / tram street-side</li>
+</ul>
+<p>At a TVM, customers can purchase or reload paper tickets, as well as Clipper cards. For almost all ticketing machine options, pricing is broken down into the follow categories:</p>
+<ul>
+<li>Regular</li>
+<li>Discount (Youth, Senior, People with Disabilities)</li>
+</ul>
+<p>In addition to adding cash value to a Clipper card, or purchasing single or double-ride paper tickets, the following monthly passes may be purchased (with the same pricing categories as above):</p>
+<ul>
+<li>&quot;M&quot; Pass: Muni (includes Cable Car)</li>
+<li>&quot;A&quot; Pass: Muni (includes Cable Car) + BART within SF</li>
+</ul>
+<p>Finally, special Visitor Passports for tourists can be purchased without a Clipper card:</p>
+<ul>
+<li>1 Day</li>
+<li>3 Day</li>
+<li>7 Day</li>
+</ul>
+<p><a href="https://www.youtube.com/watch?v=RhDDPIyjLKs">This video</a> gives a pretty comprehensive overview of the current TVM interface, although Muni has simplified its fare structure since then.</p>
+<h5 class="mume-header" id="muni-metro-stations">Muni Metro Stations</h5>
+
+<p>Muni Metros stop at a variety of different station types, including on-street, street-side, and underground stations. It's important to note that currently, TVM (and fare gates) are only present in underground stations. All other station types operate using a proof-of-payment system.</p>
+<p>All underground stations are also staffed by station agents within booths. <a href="https://www.youtube.com/watch?v=uXyVPC8-8sk">This video</a> mentions a few of the customer service experiences BART (which shares stations with Muni downtown) agents can encounter - many of them have to do with TVMs. It's important to note, however, that Muni and BART do <em>not</em> use the same ticketing experiences (BART relies on a different fare system), although it seems the physical machines are similar.</p>
+<h4 class="mume-header" id="munis-customer-demographics">Muni's Customer Demographics</h4>
+
+<blockquote>
+<p>As a part of identifying use cases, I began by looking at studies on who uses Muni, and what for.</p>
+</blockquote>
+<p>The latest <a href="https://www.sfmta.com/sites/default/files/reports/2017/Travel%20Decision%20Survey%20FY%202017%20-%20Key%20Findings%20Summary%20Report.pdf">SFMTA Travel Decision survey</a> is from 2017. Key findings are <a href="https://www.sfmta.com/sites/default/files/reports/2017/Travel%20Decision%20Survey%20Results%20-%202017_MTAB.pdf">summarized here</a>.</p>
+<p>SFMTA also publishes a survey specific to Muni riders. Key findings <a href="https://www.sfmta.com/sites/default/files/reports-and-documents/2017/12/11-21-17_item_12_2017_muni_rider_survey.pdf">are here</a>.</p>
+<p>As a part of MUNIForward, comprehensive surveys of individual lines were conducted as well. A summary of results from the 14 Mission Survey in 2015 <a href="https://www.sfmta.com/sites/default/files/projects/2015/14_Survey_Summary.pdf">is here</a>.</p>
+<h4 class="mume-header" id="universal-design-considerations">Universal Design Considerations</h4>
+
+<blockquote>
+<p>As mentioned, many different people in different contexts use public transit interfaces, and the usability of such interfaces must be evaluated for all. Laws such as the ADA and California's Building Standards Codes also apply. I prefer conceptualizing accessible design within the framework of &quot;Universal Design&quot;, as <a href="https://www.microsoft.com/en-us/design/inclusive">advocated by companies such as Microsoft</a> and the World Health Organization. Such an approach sees designing for people with disabilities as an inherent part of good design in general, and recognizes that all of us experience disability, whether permanent, or transient, and a product which takes this into account is made more usable for everyone.</p>
+</blockquote>
+<p>An example given by Microsoft:</p>
+<blockquote>
+<p><em>Designing for people with permanent disabilities can seem like a significant constraint, but the resulting designs can actually benefit a much larger number of people. For example, closed captioning was created for the hard of hearing community. But, there are many benefits of captioning such as reading in a crowded airport, or, teaching children how to read.</em></p>
+</blockquote>
+<blockquote>
+<p>In a real world project, thorough vetting of designs for legal compliance at the local, state, and federal levels would be needed. For this design exercise, I mainly rely on the following documents for guidance. (Obviously, good universal design requires more than just complying with regulations or going through a checklist, but this gives us a good starting point for considering the needs of all our customers).</p>
+</blockquote>
+<p>As a part of enforcing the ADA, the Department of Justice assessed &quot;Kiosks and Other Information Transaction Machines&quot; used by the federal government, and provided a <a href="https://www.justice.gov/crt/kiosks-and-other-information-transaction-machines-itms1">checklist to aid in accessibility evaluation</a>.</p>
+<p>The government of Ontario also provides <a href="https://www.ontario.ca/page/how-make-self-service-kiosks-accessible">some examples of accessibility features</a>.</p>
+<p>The Federal Transit Administration <a href="http://onlinepubs.trb.org/onlinepubs/tcrp/tcrp_rrd_32.pdf">sponsored research into the accessibility of existing TVMs</a> (note that the research is relatively old, dating from 1998).</p>
+<h4 class="mume-header" id="main-use-cases-permutations">Main Use Cases + Permutations</h4>
+
+<h5 class="mume-header" id="high-level-user-differences">High Level User Differences</h5>
+
+<blockquote>
+<p>In general, Muni customers can be differentiated in the following (non-independent) ways:</p>
+</blockquote>
+<p><img src="img/modeshare-by-purpose.png" alt="Modeshare by trip purpose"><br>
+<img src="img/modeshare-by-location.png" alt="Modeshare by trip location"></p>
+<p><img src="img/muni-trip-frequency.png" alt="Muni trip frequency distribution"><br>
+<img src="img/muni-purpose.png" alt="Muni trip purpose distribution"><br>
+<img src="img/muni-fare-payment.png" alt="Muni trip fare payment distribution"><br>
+<img src="img/muni-why-cash.png" alt="Muni trip fare payment distribution"><br>
+<img src="img/muni-why-rideshare.png" alt="Muni trip fare payment distribution"></p>
+<ul>
+<li>Trip Purpose
+<ul>
+<li><strong>Work Inbound Commute:</strong> regular, most time-sensitive</li>
+<li><strong>School Inbound Commute:</strong> regular, most time-sensitive</li>
+<li><strong>Home Inbound Commute:</strong> regular, somewhat time-sensitive</li>
+<li><strong>Shopping / Errands:</strong> irregular, somewhat time-sensitive</li>
+<li><strong>Recreation / Entertainment:</strong> irregular, off working hours, more time-sensitive</li>
+</ul>
+</li>
+<li>Frequency of Use
+<ul>
+<li><strong>First-time user:</strong> (eg Bay Area visitors), no mental model of transit system or interfaces/flows. Browses options (if there's time). Purchases multi-day passes or paper tickets.</li>
+<li><strong>Infrequent user:</strong> mental model of transit system, but not interfaces/flows. Knows which options to select, but does not memorize flow. Uses Clipper, but reloads at TVMs.</li>
+<li><strong>Frequent user:</strong> mental model of transit system and interfaces/flows. Memorizes flows. Uses Clipper Autoload.<br>
+<em>Note that it's possible for a customer to behave as a different kind of user for different lines - such as being a frequent user of their commute line(s), but an infrequent user of a line to visit the doctor.</em></li>
+</ul>
+</li>
+<li>Transit Reliance
+<ul>
+<li>Only uses non-Muni transit</li>
+<li>Prefers non-Muni transit</li>
+<li>Balanced between Muni and non-Muni transit</li>
+<li>Prefers Muni transit</li>
+<li>Only uses Muni transit (no alternative modes available)</li>
+</ul>
+</li>
+<li>TVM Reliance
+<ul>
+<li>Only uses non-TVM ticketing</li>
+<li>Prefers non-TVM ticketing</li>
+<li>Balanced between TVM and non-TVM ticketing</li>
+<li>Prefers TVM ticketing</li>
+<li>Only uses TVM ticketing</li>
+</ul>
+</li>
+</ul>
+<p>Many of these parameters correlate with more basic demographic information, such as age, ethnicity, socioeconomic status, and location of work and residence.</p>
+<blockquote>
+<p>In addition to these high level parameters, I also compiled a taxonomy for differing ability relevant to the use of TVMs derived from the universal design resources I explored earlier:</p>
+</blockquote>
+<h5 class="mume-header" id="axes-of-ability">Axes of Ability</h5>
+
+<ul>
+<li>Sight
+<ul>
+<li>Contrast</li>
+<li>Color</li>
+</ul>
+</li>
+<li>Comprehension
+<ul>
+<li>Reading Ability</li>
+<li>Cognitive Ability</li>
+<li>Memory</li>
+<li>Attention</li>
+<li>Language</li>
+</ul>
+</li>
+<li>Mobility
+<ul>
+<li>Tremors</li>
+<li>Dexterity</li>
+<li>Strength</li>
+<li>Reachability</li>
+</ul>
+</li>
+<li>Hearing
+<ul>
+<li>Ambient Noise</li>
+<li>Hearing Ability</li>
+</ul>
+</li>
+</ul>
+<h5 class="mume-header" id="example-users-and-use-cases">Example Users and Use Cases</h5>
+
+<blockquote>
+<p>The number of possible permutations and key differentiators between different customers and their use cases, as well as the importance of ensuring <strong>no customer</strong> slips through the cracks in this project means that relying on user personas alone is of limited effectiveness. However, conceptualizing a few personas which explore different logical extremes of our users and use cases is helpful to gut-check effectiveness in the course of iteration. In any real process, we would need multiple cycles of validation and testing in order to ensure results are accurate.</p>
+</blockquote>
+<h6 class="mume-header" id="irene-the-grad-student">Irene, &quot;the Grad Student&quot;</h6>
+
+<p>Irene is an <strong>English-speaking graduate student in her late 20s</strong>. She <strong>researches at USF, but lives in Outer Sunset</strong>, on the <strong>N-Judah</strong>.<br>
+Irene  often needs to visit both USF campuses. She prefers to bike to the main campus, but will take the bus or drive if it's raining or late at night. She takes Muni Metro to the Mission Bay campus. Irene's commute isn't always during rush hour, so rideshare is also occasionally faster, and she will take that if running late or Muni service has ceased. Irene owns car, but doesn't drive often because it's difficult to find parking.<br>
+Since Irene's work and home Muni stations are both aboveground, she rarely uses TVMs to pay her fare, and <strong>isn't actually sure how to get a Clipper card</strong>. This also means that despite riding Muni relatively frequently, she's never been exposed to the full selection of Muni's passes and discounts, and largely relies on cash ticketing. She certainly didn't expect an entirely different fare collection system when boarding downtown for the first time.</p>
+<h6 class="mume-header" id="james-the-summer-intern">James, &quot;the Summer Intern&quot;</h6>
+
+<p>James is an <strong>English-speaking college student in his early 20s in San Francisco for the first time</strong> for a summer internship. He <strong>works in the Financial District, but lives off 16th St Mission</strong>.<br>
+James also does not own a car. James's commute is normally in rush hour, so he's sensitive to traffic and crowdedness. Since he's in the Mission, he usually relies on BART. James is also quite tech-savvy, and likes trying out newer modes of transit, such as the electric scooters recently introduced downtown.<br>
+James also frequently visits other parts of SF and the Bay Area, and will take Muni Metro, BART, and Caltrain when available, but tends to prefer using rideshare over the bus. He usually relies on an app such as Google Maps or Transit for direction and train times, and would really just prefer to use his phone for everything. James started his SF transit adventure using a combination of BART tickets and the Muni Mobile app, as well as Caltrain passes provided by his company, but finally figured out that he could purchase a Clipper card at Walgreens. James wears glasses and is sometimes a hot mess when he takes Muni.</p>
+<h6 class="mume-header" id="ricardo-the-restaurant-manager">Ricardo, &quot;the Restaurant Manager&quot;</h6>
+
+<p>Ricardo is a <strong>Spanish-speaking restaurant manager in his late 30s who has lived in SF for most of his life</strong>. He <strong>lives off Castro, but works near 24th St Mission</strong>, and generally takes the bus to work. Ricardo is quite familiar with the bus and tram system near where he lives and works, and frequently takes Caltrain to San Jose to visit family, but doesn't spend much time downtown. Ricardo is accustomed to paying fare the way he always has, using cash. He owns a Clipper card, but doesn't have much opportunity to reload it, since he doesn't own a computer, and uses a relatively old phone. Ricardo is colorblind (deuteranopia).</p>
+<h6 class="mume-header" id="yueming-the-tourist">Yueming, &quot;the Tourist&quot;</h6>
+
+<p>Yueming is a <strong>Chinese-speaking tourist in her late 60s visiting SF (and the US) for the first time, to travel, and to see extended family</strong>. Yueming is accustomed to taking public transit (especially trains) places, and took BART from the airport (after trying to figure out how to buy a ticket for a very long time), but is confused by the difference between BART, Muni, Caltrain, and all the other transit services within SF, as well as the different ways to pay. In the first day when she had to arrive on her own, it took her quite some time to reach her hotel off the Embarcadero, but she was subsequently provided a Clipper card by family, and has found this to be a much simpler experience. Yueming has limited vision and can walk, but sometimes needs to use a cane or walker.</p>
+<h4 class="mume-header" id="key-needs-product-objectives">Key Needs + Product Objectives</h4>
+
+<h5 class="mume-header" id="increasing-speed-for-longtime-users">Increasing Speed for Longtime Users</h5>
+
+<p>Over half of riders use Muni frequently (multiple times a week), but 27% of riders still rely on cash for payment, for varying reasons (and only a small portion said it's because they don't ride Muni enough). Since TVMs are the only way to pay with cash downtown, this means that a significant portion of frequent riders must use a TVM every time they wish to make a trip, even with the existence of Clipper and alternate payment systems.</p>
+<p>This means that TVMs must consider the needs of longtime users. One of the largest reasons people don't use Muni is because they have a faster alternative, or are in a hurry. Though the ticketing process is a small portion of overall trip time, it can have a disproportinate effect on successfully completing a fast, ad-hoc trip. This is a high priority objective.</p>
+<h5 class="mume-header" id="reducing-confusion-for-unfamiliar-tvm-users">Reducing Confusion for Unfamiliar TVM Users</h5>
+
+<p>No quantitative data on customer confusion with Muni TVMs was located, but Muni's split payment systems and the variety of transit organizations within the Bay Area means that even longtime residents of the Bay might not be familiar with Muni TVMs, which are only used in a small subset of stations. Anecdotally, multiple sources say that the most frequent ticket agent interaction is due to confusion over TVM use.</p>
+<p>Customers also say that they expect TVMs to be touchscreen, or otherwise have incorrect mental models of machine operation, or fare structure. 5% of customers who use cash report confusion with how Clipper works, and roughly 10% have privacy and trust issues with Clipper. These are small but significant opportunities (constituting 4% of all riders overall) for a better TVM experience to increase trust and decrease confusion. 6% of riders surveyed report that disability and old age is a barrier to Muni use, and although TVMs are not the only reason these reasons can be barriers, they are a significant part of the overall ride interaction experience.</p>
+<p>This is also a high priority objective, due to how applicable it is to Bay and non-Bay residents alike.</p>
+<h5 class="mume-header" id="changing-munis-brand-perception">Changing Muni's Brand Perception</h5>
+
+<p>Ever since the initial introduction of Muni Metro, the system has experienced glitches, slowdowns, and has generally developed a poor reputation within the Bay Area. Satisfaction with various aspects of Muni has improved markedly over the past couple of years, yet many legacy systems, such as the current TVMs, exist.</p>
+<p>Though it's not the highest priority, a successful redesign that combines efficiency and effectiveness with more attractive visuals and branding is an important part of Muni's overall efforts to modernise and put its past behind itself.</p>
+<h4 class="mume-header" id="risk-areas">Risk Areas</h4>
+
+<h5 class="mume-header" id="disrupting-mental-models">Disrupting Mental Models</h5>
+
+<p>As demonstrated above, a sizable portion of Muni users use the system every day to get to work and school. These are the most likely to be frequent users who have strong mental models of the existing ticketing flow, and have optimized around it. As with any redesign, a key risk is alienating these &quot;power-users&quot;, by reducing the efficiency of the system for them. This is a particular concern since on the outside, the machines will remain the same - it's only the interface that would be changing.</p>
+<p>Unexpectedly encountering a new interface can mean the difference between making a train and missing it, and with Muni's relatively infrequent service intervals during weekends and late nights, that can be a very negative experience indeed.</p>
+<p>Mitigating this risk is the fact that the more experienced the user (and thus the more locked-in their ticketing mental model is), the less likely they are to actually need to use a TVM, due to the existence of Clipper Autoload. This means that the users who will experience the most disruption will likely be in the middle - users who don't ride frequently enough to use Clipper Autoload (or cannot use Clipper Autoload for other reasons, such as a lack of a bank account or limited internet access), but who do ride frequently enough to have a pre-existing mental model of how ticketing works.</p>
+<h5 class="mume-header" id="incremental-deployments-vs-mass-upgrades">Incremental Deployments vs. Mass Upgrades</h5>
+
+<p>Deploying a new interface incrementally reduces the risk of technical glitches, unanticipated issues, and other failures (longtime residents of SF will remember the <a href="http://www.rescuemuni.org/meltdown/meltdown.html">&quot;Muni meltdown&quot;</a> which occurred in the 90s as the whole system switched to automatic train control. However, having two different interfaces live at any one time, especially on identical hardware, can dramatically increase confusion and disrupt expectations. The risks of either approach (and hybrid approaches) should be assessed carefully before a deployment strategy is made.</p>
+<p>At present, a phased strategy which tests upgrades on single stations at first (preferably with lower usage), and then deploys system-wide makes sense to me.</p>
+<h5 class="mume-header" id="exacerbating-confusion-between-muni-and-bart">Exacerbating Confusion Between Muni and BART</h5>
+
+<p>As previously noted, Muni and BART use different TVMs, but they look physically similar, and are located adjacent to each other in stations where Muni and BART share service. Significantly changing the interaction model between a Muni TVM and BART TVM when they have the same physical and visual affordances can exacerbate the confusion between the two systems.</p>
+<p>Mitigating this is the fact that since Muni and BART already have very different fare structures, the machines already behave fairly differently and people are already confused anyway.</p>
+<h4 class="mume-header" id="muni-sfmta-brand-artifacts">Muni + SFMTA Brand Artifacts</h4>
+
+<blockquote>
+<p>Coordinated branding is important for recognizability and fast, unambiguous identification of Muni products and services. This is particularly important in stations where Muni and BART share service (but not ticketing). Muni retains a strong brand, and I assessed some existing artifacts for inspiration and guidance.</p>
+</blockquote>
+<ul>
+<li><a href="https://www.sfmta.com/blog/doing-worm-brief-history-munis-graphic-art">A History of MUNI's Logo</a></li>
+<li><a href="https://www.sfmta.com/blog/introducing-sfmtas-new-look">SFMTA's New Logo</a></li>
+<li><a href="https://www.citylab.com/transportation/2015/09/how-san-francisco-got-its-new-rider-friendly-transit-map/403738/">SFMTA's Redesigned Transit Map</a><br>
+<em>(Also contains helpful info about rider behavior and design considerations)</em></li>
+<li><a href="https://www.sfmta.com/sites/default/files/sfmta-webmap-august2017-j2kl.pdf">Muni's System Map</a></li>
+<li><a href="https://dribbble.com/shots/880675-San-Francisco-Muni-Pass-Collector/attachments/95077">Legacy Muni Fast Passes</a></li>
+<li><a href="https://www.sfmta.com/">The new SFMTA website</a></li>
+<li><a href="https://www.youtube.com/watch?v=D2l0T03tuGA">Muni station signage and design</a></li>
+</ul>
+<h4 class="mume-header" id="comparative-artifacts">Comparative Artifacts</h4>
+
+<blockquote>
+<p>People generally have strong expectations for how public transit works across different cities, at least in the same country or region. It's work looking at how other flat-fare transit systems in the US and abroad handle ticketing, both for inspiration, and to understand what a &quot;common mental model&quot; for the ticketing process might be.</p>
+</blockquote>
+<blockquote>
+<p>One can't approach TVM redesigns without reading Aaron Reiss's <a href="http://aaronreiss.com/Metro-Ticket-Kiosks">comparison of MTA and BART's purchase flows</a>, and the history of each. Important lessons about how speed isn't always the ultimate metric.</p>
+</blockquote>
+<blockquote>
+<p>I'm generally in love with LA Metro's design, and their <a href="https://www.metro.net/riding/tap-vending-machines/">TAP TVMs</a> are no exception. Some really great ideas here, such as colors and blocking to introduce layout and hierarchy, using a similar button-press interface.</p>
+</blockquote>
+<h3 class="mume-header" id="exploration">Exploration</h3>
+
+<h4 class="mume-header" id="flows">Flows</h4>
+
+<blockquote>
+<p>I began by blocking out a series of different flows, mapping out visually the breadth and depth of different approaches.</p>
+</blockquote>
+<h6 class="mume-header" id="notes">Notes</h6>
+
+<p><em>Flows are arranged vertically by step, and horizontally by options</em><br>
+<em>[Brackets] indicate multiple choices</em><br>
+<em>(Parentheses) indicate optional actions</em></p>
+<h5 class="mume-header" id="three-category">Three Category</h5>
+
+<blockquote>
+<p>A key insight derived from observing people use the existing flow and analysing survey data is that though Muni's fare structure and ticketing interface is quite complicated, most people use a small and well-defined portion of the interface. I first focused on how we can use this to our advantage to quickly focus riders on options they are likely to use.</p>
+</blockquote>
+<p><img src="img/flows/Three-Category.png" alt="Three Category Flow"></p>
+<h6 class="mume-header" id="pros">Pros</h6>
+
+<p>Narrow (small set of choices per screen)<br>
+Straightforward, and unambiguous<br>
+Balanced for different customers (all cases take a roughly equal number of steps)</p>
+<h6 class="mume-header" id="cons">Cons</h6>
+
+<p>Relatively deep (relatively large number of steps for all cases)<br>
+Difficult to compare options</p>
+<h5 class="mume-header" id="compact-a">Compact A</h5>
+
+<blockquote>
+<p>This flow reduces the number of steps it takes to buy a single-trip adult ticket to one tap, making switching to reduced fare an optional step.</p>
+</blockquote>
+<p><img src="img/flows/Compact-A.png" alt="Compact A Flow"></p>
+<h6 class="mume-header" id="pros-1">Pros</h6>
+
+<p>Increases speed for Single-Trip Adult transactions, which comprise about a quarter of all Muni transactions.</p>
+<h6 class="mume-header" id="cons-1">Cons</h6>
+
+<p>Possibly increases reduced fare abuse (easy to compare fare differences)<br>
+Possibly increases likelyhood of reduced fare users overpaying (they see instructions to pay, and forget to toggle the reduced fare option)</p>
+<h5 class="mume-header" id="compact-c">Compact C</h5>
+
+<blockquote>
+<p>This flow elevates both single trip options to the first screen, and elevates both Clipper monthly pass options to the second screen.</p>
+</blockquote>
+<p><img src="img/flows/Compact-C.png" alt="Compact C Flow"></p>
+<h6 class="mume-header" id="pros-2">Pros</h6>
+
+<p>Increases speed for Single-Trip Adult and Monthly Pass transactions, which comprise about a half of all Muni transactions.</p>
+<h6 class="mume-header" id="cons-2">Cons</h6>
+
+<p>Slightly increases breadth (number of options on screen at any one time).</p>
+<h5 class="mume-header" id="clipper-emphasis">Clipper Emphasis</h5>
+
+<blockquote>
+<p>This flow groups all paper ticket options together into a second screen, emphasizing Clipper-based options. It also elevates preset Clipper cash value options</p>
+</blockquote>
+<p><img src="img/flows/Clipper-Emphasis.png" alt="Clipper Emphasis Flow"></p>
+<h6 class="mume-header" id="pros-3">Pros</h6>
+
+<p>Increases speed of all transactions, relative to baseline<br>
+Easy to compare Single-Trip and Visitor Passport options<br>
+Easy to compare Clipper Cash Value and Monthly Passes<br>
+Reduces confusion about Clipper Cash Value<br>
+Advocates for adoption of Clipper</p>
+<blockquote>
+<p><a href="http://www.spur.org/news/2017-06-26/making-bay-area-transit-affordable-those-who-need-it-most">Articles like this</a> highlight why Clipper has recieved limited adoption among users who would find it the most useful, but also show that Bay Area transit agencies are responding to identified issues. Increasing awareness and education about Clipper in TVMs might be beneficial for users in the long run, even if it slows down cash transactions.</p>
+</blockquote>
+<h6 class="mume-header" id="cons-3">Cons</h6>
+
+<p>More difficult to compare Clipper versus paper options<br>
+Decreases speed for Single-Trip Adult transactions (relative to Compact A or C)<br>
+Increases breadth</p>
+<h5 class="mume-header" id="modifier-language-first">Modifier: Language First</h5>
+
+<blockquote>
+<p>One modifier of all flows is to add an explicit language selection screen to the start.</p>
+</blockquote>
+<p><img src="img/flows/Language-First.png" alt="Language First Flow"></p>
+<h6 class="mume-header" id="pros-4">Pros</h6>
+
+<p>Increases usability for inexperienced users who do not speak English</p>
+<h6 class="mume-header" id="cons-4">Cons</h6>
+
+<p>Decreases speed for all users who do speak English</p>
+<h5 class="mume-header" id="modifier-explicit-check-balance">Modifier: Explicit Check Balance</h5>
+
+<blockquote>
+<p>Another modifier is to introduce an explicit check balance function, rather than automatically displaying Clipper info upon tapping.</p>
+</blockquote>
+<p><img src="img/flows/Explicit-Check-Balance.png" alt="Explicit Check Balance Flow"></p>
+<h6 class="mume-header" id="pros-5">Pros</h6>
+
+<p>Increases privacy of clipper transactions</p>
+<h6 class="mume-header" id="cons-5">Cons</h6>
+
+<p>Increases complexity to check balance, and number of steps to evaluate whether balance is sufficient</p>
+<h5 class="mume-header" id="other-flows-notes">Other Flows + Notes</h5>
+
+<blockquote>
+<p>I also explored more radical flows such as a BART-style payment-first flow, but found that this made payment by cash significantly more complicated.</p>
+</blockquote>
+<blockquote>
+<p>The current Clipper system requires users to re-tap their card after payment to complete the transaction, adding an additional step. Clipper 2.0 will behave more flexibly, however, and this will not be necessary.</p>
+</blockquote>
+<blockquote>
+<p>In general, increase in breadth most impacts sight-limited users who must use sequential narration to navigate the interface. Presenting highly unrelated options on the screen to reduce number of taps actually decreases speed for them since they must sit through additional menu options.</p>
+</blockquote>
+<h5 class="mume-header" id="flow-selection">Flow Selection</h5>
+
+<blockquote>
+<p>In a real world design situation, the next step would be to test a few flows with users, and validate some of our assumptions. In lieu of that, my preference is to continue with <strong>Clipper Emphasis</strong>, which both advocates for Clipper usage as well as striking a balance between complexity, clarity, and speed for all options.</p>
+</blockquote>
+<p><img src="img/flows/Clipper-Emphasis.png" alt="Clipper Emphasis Flow"></p>
+<h3 class="mume-header" id="mockups">Mockups</h3>
+
+<h4 class="mume-header" id="low-fidelity-mockups">Low Fidelity Mockups</h4>
+
+<blockquote>
+<p>Because our constraints and information design are fairly well-defined, I decided to move directly into low-fidelity mockups. My approach is to work directly in Figma and generate extremely low-resolution (but to scale) &quot;blockboard&quot; mockups that roughly mirror a high fidelity layout. This allows me to get a sense of balance, density, and UI feasibility, and iterate non destructively extremely quickly.</p>
+</blockquote>
+<p><img src="img/mockups/blockboards.PNG" alt="Key Flow Blockboards"></p>
+<blockquote>
+<p>Again here, project constraints limit the exploration space of coarse layouts quite a bit, so I was pretty quickly able to settle on a set of blockboards I was happy with, and transition to higher fidelity explorations.</p>
+</blockquote>
+<h4 class="mume-header" id="high-fidelity-mockups">High Fidelity Mockups</h4>
+
+<blockquote>
+<p>When making high fidelity mockups, I'm focusing on refining and extrapolating from the component system I envisioned. I choose one layout to iterate on in order to solidify system parameters.</p>
+</blockquote>
+<blockquote>
+<p>This first take works, sort of, but the amount of saturated color and unbalanced whitespace makes it feel noisy and chaotic, even on the homescreen where there are only 3 primary options.</p>
+</blockquote>
+<p><img src="img/mockups/Home-Exploration-A.png" alt="Home Exploration A"></p>
+<blockquote>
+<p>I want to see if decreasing the amount of saturated area would help, so I invert the main selection blocks. This feels better, but obviously is very roughly put together.</p>
+</blockquote>
+<p><img src="img/mockups/Home-Exploration-B.png" alt="Home Exploration B"></p>
+<blockquote>
+<p>I start again, now getting more of a feel for what works within this design space. I take some inspiration from newspapers, and graphic elements on <a href="https://dribbble.com/shots/827403-San-Francisco-BART-Ticket">BART single-use tickets</a>. This works better from an affordance perspective as well, since the horizontal rules maintain a tidy structure without implying a touchable surface, like the solid blocks of color.</p>
+</blockquote>
+<p><img src="img/mockups/Home-Exploration-C.png" alt="Home Exploration C"></p>
+<blockquote>
+<p>I like the previous take, but it didn't feel much like Muni. I start playing around with color again to see if that changes things. Muni Metro's old color scheme ends up working wonderfully (even though I normally hate maroon and gold).</p>
+</blockquote>
+<p><img src="img/mockups/Home-Exploration-D.png" alt="Home Exploration D"></p>
+<blockquote>
+<p>Some final type and color refinements are made. Working at this fidelity has also made me realize that making the station service bullets dynamic and track trains would be simple, and would help usability (who hasn't run into a station praying that they have time to buy a ticket?).</p>
+</blockquote>
+<p><img src="img/mockups/Home-A.png" alt="Home A"></p>
+<blockquote>
+<p>From there, it's relatively straightforward to make high-fidelity mocks for the rest of the primary screens, adjusting the design language as necessary.</p>
+</blockquote>
+<p><img src="img/mockups/Clipper-Options-A.png" alt="Home A"><br>
+<img src="img/mockups/Payment-Clipper-A.png" alt="Home A"><br>
+<img src="img/mockups/Paper-Options-A.png" alt="Home A"><br>
+<img src="img/mockups/Payment-Paper-A.png" alt="Home A"></p>
+<h4 class="mume-header" id="figma-prototype-1">Figma Prototype</h4>
+
+<blockquote>
+<p>Figma offers a straightforward way to wire together artboards into a <a href="https://www.figma.com/proto/ZduUKJ3GO9jBt2X6VzTl7qjn/Cruise-Design-Challenge-II?node-id=1%3A3343&amp;scaling=contain">simple prototype</a> containing different permutations of the main experience. Running through the flow in a prototype mindset lets me think of anything I may have missed.</p>
+</blockquote>
+<div class="prototype-container"><iframe style="border: none;" src="https://www.figma.com/embed?embed_host=share&amp;url=https://www.figma.com/proto/ZduUKJ3GO9jBt2X6VzTl7qjn/Cruise-Design-Challenge-II?node-id=1%3A3343&amp;scaling=contain" allowfullscreen=""></iframe></div>
+<h4 class="mume-header" id="web-based-prototype-1">Web-based prototype</h4>
+
+<blockquote>
+<p>However, a web-based prototype is necessary to show certain aspects, like motion - both ambient, such as on the change language prompt, and in response to screen transitions. This prototype <a href="prototype">can be found here</a>.</p>
+</blockquote>
+<h4 class="mume-header" id="edge-cases-unmocked-interactions">Edge Cases + Unmocked Interactions</h4>
+
+<p>Interactions without high-fidelity mockups or not prototyped are mapped out and considered within user flows.</p>
+<p>These include:</p>
+<ul>
+<li>Payment Failure - <em>An error screen is shown with the option to retry</em></li>
+<li>Partial Payment Interstitials - <em>The 'total' field changes to a 'remaining field' upon insertion of cash</em></li>
+<li>Payment Processing Indicators - <em>Just a load screen as payments process</em></li>
+<li>Cancel Confirmation Dialog - <em>A confirmation screen is shown with the option to cancel or go back</em></li>
+<li>Change Language Screen - <em>A list of supported languages is shown</em></li>
+<li>System Alerts + Delays - <em>The train tracker is augmented or replaced with alert messages</em></li>
+<li>Help Functionality (Summon Station Agent) - <em>I'm not sure what the current help feature does, so I don't actually know. Presumably a message about the station agent arriving is displayed</em></li>
+<li>Machine Failure - <em>A non interactive error screen is shown with a debug code</em></li>
+<li>Clipper Card tap prompt - <em>A prompt screen is shown when Clipper Cards need to be read</em></li>
+<li>Text-to-Speech handling - <em>The machine reads options sequentially, much like an interactive phone menu. Only primary text and costs are read, not secondary captions. Pressing help at the same time as another action will read extended description text of that action</em></li>
+</ul>
+
+      </div>
+      
+      
+    </body>
+    
+    
+    
+    
+    
+    
+    
+  </html>
